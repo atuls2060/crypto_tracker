@@ -15,16 +15,16 @@ app.get("/", (req, res) => {
     res.send("server running")
 })
 
-// app.use("/users", Validator, userRouter)
-// app.use("/watchlist", Authentication, watchListRouter)
+app.use("/users", Validator, userRouter)
+app.use("/watchlist", Authentication, watchListRouter)
 
 
 const PORT = process.env.PORT
 
 app.listen(PORT, async () => {
     try {
-        // await connection()
-        // console.log("Connected to db")
+        await connection()
+        console.log("Connected to db")
     } catch (error) {
         console.log("error", error.message)
     }

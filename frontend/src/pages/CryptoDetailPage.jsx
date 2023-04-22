@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Box, Button, Container, Flex, Heading, Img, Spinner, Text, VStack, useBreakpointValue, useToast } from '@chakra-ui/react'
 import CoinChart from '../components/CoinChart'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { CryptoContext } from '../Contexts/CryptoContext'
 import axios from 'axios'
 import { addToWatchList } from '../utils/api'
+import { AuthContext } from '../Contexts/AuthContext'
 
 const CryptoDetailPage = () => {
+    const { isLoggedIn } = useContext(AuthContext)
     const toast = useToast()
     const isMobile = useBreakpointValue({ base: true, lg: false })
     const { id } = useParams()
@@ -27,6 +29,16 @@ const CryptoDetailPage = () => {
         }
     }
     const handleAdd = async () => {
+        if (!isLoggedIn) {
+            toast({
+                title: "Login First",
+                status: "info",
+                position: "top",
+                isClosable: true,
+                duration: 1000
+            })
+            return <Navigate to="/login" />
+        }
         setIsLoading(true)
         try {
             await addToWatchList(id)
