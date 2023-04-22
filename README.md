@@ -34,6 +34,11 @@ npm start
 ```
 
 5. The app will now be available at `http://localhost:3000`.
+## Screenshots![crypto_tracker](https://user-images.githubusercontent.com/34827845/233775155-83369f07-5eb9-460f-8cb9-d400cf5bbc49.jpg)
+![screenshot](https://user-images.githubusercontent.com/34827845/233775164-ee308e1f-7cf7-477f-aefc-cd2b7db680d5.png)
+![screencapture-crypto-tracker](https://user-images.githubusercontent.com/34827845/233775224-8caececb-ae38-4dfb-8035-85c30a5df94e.png)
+
+
 
 ## Usage
 
