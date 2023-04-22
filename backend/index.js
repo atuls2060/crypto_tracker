@@ -14,7 +14,7 @@ app.use(cors({
 app.use(express.json())
 
 app.get("/", (req, res) => {
-    res.send("server running")
+    res.send(`server running${process.env.ORIGIN_URL}`)
 })
 
 app.use("/users", Validator, userRouter)
