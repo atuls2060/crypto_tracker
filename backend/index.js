@@ -8,7 +8,9 @@ const { connection } = require("./utils/db");
 require("dotenv").config();
 
 const app = express();
-app.use(cors())
+app.use(cors({
+    origin: process.env.ORIGIN_URL
+}))
 app.use(express.json())
 
 app.get("/", (req, res) => {
