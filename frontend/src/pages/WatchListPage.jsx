@@ -9,6 +9,7 @@ const WatchListPage = () => {
   const [watchList, setWatchList] = useState([])
 
   const getData = async () => {
+    
     setLoading(true)
     try {
       const { data } = await getWatchList()
