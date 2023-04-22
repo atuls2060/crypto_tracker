@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Flex, Heading, Spinner, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, Spinner, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { getWatchList } from '../utils/api';
 import TableRow from '../components/TableRow'
@@ -9,7 +9,7 @@ const WatchListPage = () => {
   const [watchList, setWatchList] = useState([])
 
   const getData = async () => {
-    
+
     setLoading(true)
     try {
       const { data } = await getWatchList()
@@ -38,37 +38,45 @@ const WatchListPage = () => {
               <Heading color="gray" >Nothing in your Watchlist!</Heading>
               <Link to="/"> <Button variant="outline">Browse Currency</Button></Link>
             </Flex> :
-            <Table>
-              <Thead>
-                <Tr>
-                  <Th>
-                    Coin
-                  </Th>
-                  <Th>
-                    Symbol
-                  </Th>
-                  <Th>
-                    Price
-                  </Th>
-                  <Th>
-                    24H Change
-                  </Th>
-                  <Th>
-                    Market Cap
-                  </Th>
-                  <Th>
-                    Action
-                  </Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {
-                  watchList.map((coin) => {
-                    return <TableRow key={coin.id} isWatchListRow={true} removeDeletedRow={removeDeletedRow} {...coin} />
-                  })
-                }
-              </Tbody>
-            </Table>
+            <Box
+              overflowX="scroll"
+              sx={{
+                "::-webkit-scrollbar": {
+                  display: "none",
+                },
+              }}>
+              <Table>
+                <Thead>
+                  <Tr>
+                    <Th>
+                      Coin
+                    </Th>
+                    <Th>
+                      Symbol
+                    </Th>
+                    <Th>
+                      Price
+                    </Th>
+                    <Th>
+                      24H Change
+                    </Th>
+                    <Th>
+                      Market Cap
+                    </Th>
+                    <Th>
+                      Action
+                    </Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {
+                    watchList.map((coin) => {
+                      return <TableRow key={coin.id} isWatchListRow={true} removeDeletedRow={removeDeletedRow} {...coin} />
+                    })
+                  }
+                </Tbody>
+              </Table>
+            </Box>
       }
     </Container>
   )
