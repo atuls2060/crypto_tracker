@@ -1,6 +1,6 @@
 import axios from "axios"
 const baseUrl = process.env.REACT_APP_BASE_URL
-let token = JSON.parse(localStorage.getItem("user")).token
+let token = JSON.parse(localStorage.getItem("user"))?.token
 
 
 export const loginUser = async (userData) => {
